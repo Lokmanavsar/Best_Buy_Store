@@ -309,7 +309,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
         - name: product-service
-          image: lokmanavsar229/product-service-best_buy:latest # Custom product service image
+          image: gulsahavsar/product-service-best-buy:latest # Custom product service image
           ports:
             - containerPort: 3002 # Product service listens on this port
           env: # Environment variables for configuration
