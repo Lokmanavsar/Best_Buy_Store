@@ -41,8 +41,6 @@ The Best Buy application is a microservices-based, containerized architecture th
 Step-by-step instructions to deploy the application in a Kubernetes cluster.
 
 ## Table of Microservice Repositories
-A table listing each microservice repository and its GitHub link.
-
 
 | Service               | Repository Link     |
 |-----------------------|---------------------|
@@ -53,8 +51,16 @@ A table listing each microservice repository and its GitHub link.
 | `makeline-service-Best_Buy`      | [makeline-service-Best_Buy](https://github.com/Lokmanavsar/makeline-service-Best_Buy.git)   |
 | `ai-service-Best_Buy`            | [ai-service-Best_Buy](https://github.com/Lokmanavsar/ai-service-Best_Buy.git)   |
 
+## Table of Docker Images
 
-![Logical Application Architecture Diagram](assets/Algonquin%20Pet%20Store%20On%20Steroids.png)
+| Service               | Repository Link     |
+|-----------------------|---------------------|
+| `store-front-Best_Buy`           | [store-front-best-buy](https://hub.docker.com/repository/docker/lokmanavsar229/store-front-best_buy/general)   |
+| `order-service-Best_Buy`         | [order-service-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/order-service-best_buy/general)   |
+| `product-service-Best_Buy`       | [product-service-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/product-service-best_buy/general)   |
+| `store-admin-Best_Buy`           | [store-admin-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/strore-admin-best_buy/general)   |
+| `makeline-service-Best_Buy`      | [makeline-service-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/makeline-best_buy/general)   |
+| `ai-service-Best_Buy`            | [ai-service-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/ai-service-best_buy/general)   |
 
 ## Run the app on Azure Kubernetes Service (AKS)
 
