@@ -44,7 +44,7 @@ The Best Buy application is a microservices-based, containerized architecture th
 2. **Create a Resource Group:**
    - In the Azure Portal, search for **Resource Groups** in the search bar.
    - Click **Create** and fill in the following:
-     - **Resource group name**: `AlgonquinPetStoreRG`
+     - **Resource group name**: `BestBuyRG`
      - **Region**: `Canada`.
    - Click **Review + Create** and then **Create**.
 
@@ -53,9 +53,9 @@ The Best Buy application is a microservices-based, containerized architecture th
    - Click **Create** and select **Kubernetes cluster**
    - In the `Basics` tap fill in the following details:
      - **Subscription**: Select your subscription.
-     - **Resource group**: Choose `AlgonquinPetStoreRG`.
+     - **Resource group**: Choose `BestBuyRG`.
      - **Cluster preset configuration**: Choose `Dev/Test`.
-     - **Kubernetes cluster name**: `AlgonquinPetStoreCluster`.
+     - **Kubernetes cluster name**: `BestBuyCluster`.
      - **Region**: Same as your resource group (e.g., `Canada`).
      - **Availability zones**: `None`.
      - **AKS pricing tier**: `Free`.
@@ -95,7 +95,12 @@ The Best Buy application is a microservices-based, containerized architecture th
 
    - Copy the command shown in the portal for configuring `kubectl` (it will look something like this):
      ```
-     az aks get-credentials --resource-group AlgonquinPetStoreRG --name AlgonquinPetStoreCluster
+     az aks get-credentials --resource-group BestBuyRG --name BestBuyCluster
+     ```
+
+     - Test your connection to the AKS cluster:
+     ```
+     kubectl get nodes
      ```
 
 ## Table of Microservice Repositories
