@@ -1,4 +1,6 @@
 # Algonquin Pet Store (On Steroids)
+## Updated Application Architecture
+![Best Buy architecture diagram](assets/Best_Buy.png)
 Welcome to the Algonquin Pet Store (On Steroids) application.
 
 This sample demo app consists of a group of containerized microservices that can be easily deployed into a Kubernetes cluster. This is meant to show a realistic scenario using a polyglot architecture, event-driven design, and common open source back-end services (eg - RabbitMQ, MongoDB). The application also leverages OpenAI's models to generate product descriptions and images. This can be done using either [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview) or [OpenAI](https://openai.com/).
