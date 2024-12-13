@@ -1,16 +1,43 @@
-# Algonquin Pet Store (On Steroids)
+# Building a Cloud-Native App for Best Buy
 ## Updated Application Architecture
+
 ![Best Buy architecture diagram](assets/Best_Buy.png)
-Welcome to the Algonquin Pet Store (On Steroids) application.
 
-This sample demo app consists of a group of containerized microservices that can be easily deployed into a Kubernetes cluster. This is meant to show a realistic scenario using a polyglot architecture, event-driven design, and common open source back-end services (eg - RabbitMQ, MongoDB). The application also leverages OpenAI's models to generate product descriptions and images. This can be done using either [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview) or [OpenAI](https://openai.com/).
+## Application and Architecture Explanation
 
-This application is inspired by Azure Kubernetes Service (AKS) quickstart demo [Azure Kubernetes Service (AKS) Docs](https://learn.microsoft.com/en-us/azure/aks/).
+Welcome to the Best Buy application.
+The Best Buy application is a microservices-based, containerized architecture that can be deployed to a Kubernetes cluster. The design emphasizes polyglot programming, event-driven communication, and integration with AI services to enhance functionality. Here's a breakdown of how the application works: 
 
-> [!NOTE]
-> This is not meant to be an example of perfect code to be used in production, but more about showing a realistic application running in kubernetes. 
+### 1.Store Front (Vue):
+* Acts as the customer-facing interface.
+*Users can browse products, place orders, and interact with the platform.
 
-## Architecture
+### 2.Store Admin (Vue):
+* Provides store administrators with a management interface for order tracking and product catalog management.
+
+### 3.Order Service (Node):
+* Manages customer orders, including their creation and updates.
+* Communicates asynchronously via Azure Service Bus for seamless order processing.
+
+### 4.Product Service (Rust):
+* Handles product-related functionalities such as catalog updates and inventory management.
+* Works in conjunction with the Order Service and Store Front to provide up-to-date product data.
+
+### 5.Makeline Service (Go):
+* Coordinates the fulfillment pipeline, ensuring orders are processed and tracked efficiently.
+* Updates the Order Database (MongoDB) and interacts with other microservices for real-time processing.
+
+### 6.AI Service (Python):
+* Uses OpenAI's GPT-4 model to generate product descriptions, improving the content quality of the storefront.
+* Integrates with the DALL-E model to generate product images for a visually engaging user experience.
+
+### 7.Order Database (MongoDB):
+Serves as the primary data store for orders, maintaining a scalable and efficient backend for order-related data.
+
+### 8.Azure Service Bus:
+Acts as the backbone for event-driven communication between microservices, ensuring reliability and decoupled interactions.
+
+
 
 The application has the following services: 
 
