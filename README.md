@@ -44,18 +44,14 @@ Step-by-step instructions to deploy the application in a Kubernetes cluster.
 A table listing each microservice repository and its GitHub link.
 
 
-| Service | Github Repo |
-| --- | --- | --- |
-| `store-front-Best_Buy` | [store-front-Best_Buy](https://github.com/Lokmanavsar/store-front-Best_Buy.git) |
-| `store-admin` | Web app used by store employees to view orders in queue and manage products (Vue.js) | [store-admin-L8](https://github.com/ramymohamed10/store-admin-L8) |
-| `order-service` | This service is used for placing orders (Javascript) | [order-service-L8](https://github.com/ramymohamed10/order-service-L8) |
-| `product-service` | This service is used to perform CRUD operations on products (Rust) | [product-service-L8](https://github.com/ramymohamed10/product-service-L8) |
-| `makeline-service` | This service handles processing orders from the queue and completing them (Golang) | [makeline-service-L8](https://github.com/ramymohamed10/makeline-service-L8) |
-| `ai-service` | Optional service for adding generative text and graphics creation (Python) | [ai-service-L8](https://github.com/ramymohamed10/ai-service-L8) |
-| `rabbitmq` | RabbitMQ for an order queue | [rabbitmq](https://github.com/docker-library/rabbitmq) |
-| `mongodb` | MongoDB instance for persisted data | [mongodb](https://github.com/docker-library/mongo) |
-| `virtual-customer` | Simulates order creation on a scheduled basis (Rust) | [virtual-customer-L8](https://github.com/ramymohamed10/virtual-customer-L8) |
-| `virtual-worker` | Simulates order completion on a scheduled basis (Rust) | [virtual-worker-L8](https://github.com/ramymohamed10/virtual-worker-L8) |
+| Service               | Repository Link     |
+|-----------------------|---------------------|
+| `store-front-Best_Buy`           | [store-front-best-buy](https://github.com/Lokmanavsar/store-front-Best_Buy.git)   |
+| `order-service-Best_Buy`         | [order-service-Best_Buy](https://github.com/Lokmanavsar/order-service-Best_Buy.git)   |
+| `product-service-Best_Buy`       | [product-service-Best_Buy](https://github.com/Lokmanavsar/product-service-Best_Buy.git)   |
+| `store-admin-Best_Buy`           | [store-admin-Best_Buy](https://github.com/Lokmanavsar/store-admin-Best_Buy.git)   |
+| `makeline-service-Best_Buy`      | [makeline-service-Best_Buy](https://github.com/Lokmanavsar/makeline-service-Best_Buy.git)   |
+| `ai-service-Best_Buy`            | [ai-service-Best_Buy](https://github.com/Lokmanavsar/ai-service-Best_Buy.git)   |
 
 
 ![Logical Application Architecture Diagram](assets/Algonquin%20Pet%20Store%20On%20Steroids.png)
