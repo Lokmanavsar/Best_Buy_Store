@@ -32,18 +32,21 @@ The Best Buy application is a microservices-based, containerized architecture th
 * Integrates with the DALL-E model to generate product images for a visually engaging user experience.
 
 ### 7.Order Database (MongoDB):
-Serves as the primary data store for orders, maintaining a scalable and efficient backend for order-related data.
+* Serves as the primary data store for orders, maintaining a scalable and efficient backend for order-related data.
 
 ### 8.Azure Service Bus:
-Acts as the backbone for event-driven communication between microservices, ensuring reliability and decoupled interactions.
+* Acts as the backbone for event-driven communication between microservices, ensuring reliability and decoupled interactions.
+
+## Deployment Instructions
+Step-by-step instructions to deploy the application in a Kubernetes cluster.
+
+## Table of Microservice Repositories
+A table listing each microservice repository and its GitHub link.
 
 
-
-The application has the following services: 
-
-| Service | Description | Github Repo |
+| Service | Github Repo |
 | --- | --- | --- |
-| `store-front` | Web app for customers to place orders (Vue.js) | [store-front-L8](https://github.com/ramymohamed10/store-front-L8) |
+| `store-front-Best_Buy` | [store-front-Best_Buy](https://github.com/Lokmanavsar/store-front-Best_Buy.git) |
 | `store-admin` | Web app used by store employees to view orders in queue and manage products (Vue.js) | [store-admin-L8](https://github.com/ramymohamed10/store-admin-L8) |
 | `order-service` | This service is used for placing orders (Javascript) | [order-service-L8](https://github.com/ramymohamed10/order-service-L8) |
 | `product-service` | This service is used to perform CRUD operations on products (Rust) | [product-service-L8](https://github.com/ramymohamed10/product-service-L8) |
