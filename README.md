@@ -5,7 +5,6 @@
 
 ## Application and Architecture Explanation
 
-Welcome to the Best Buy application.
 The Best Buy application is a microservices-based, containerized architecture that can be deployed to a Kubernetes cluster. The design emphasizes polyglot programming, event-driven communication, and integration with AI services to enhance functionality. Here's a breakdown of how the application works: 
 
 ### 1.Store Front (Vue):
@@ -38,7 +37,66 @@ The Best Buy application is a microservices-based, containerized architecture th
 * Acts as the backbone for event-driven communication between microservices, ensuring reliability and decoupled interactions.
 
 ## Deployment Instructions
-Step-by-step instructions to deploy the application in a Kubernetes cluster.
+
+1. **Log in to Azure Portal:**
+   - Go to [https://portal.azure.com](https://portal.azure.com) and log in with your Azure account.
+
+2. **Create a Resource Group:**
+   - In the Azure Portal, search for **Resource Groups** in the search bar.
+   - Click **Create** and fill in the following:
+     - **Resource group name**: `AlgonquinPetStoreRG`
+     - **Region**: `Canada`.
+   - Click **Review + Create** and then **Create**.
+
+3. **Create an AKS Cluster:**
+   - In the search bar, type **Kubernetes services** and click on it.
+   - Click **Create** and select **Kubernetes cluster**
+   - In the `Basics` tap fill in the following details:
+     - **Subscription**: Select your subscription.
+     - **Resource group**: Choose `AlgonquinPetStoreRG`.
+     - **Cluster preset configuration**: Choose `Dev/Test`.
+     - **Kubernetes cluster name**: `AlgonquinPetStoreCluster`.
+     - **Region**: Same as your resource group (e.g., `Canada`).
+     - **Availability zones**: `None`.
+     - **AKS pricing tier**: `Free`.
+     - **Kubernetes version**: `Default`.
+     - **Automatic upgrade**: `Disabled`.
+     - **Automatic upgrade scheduler**: `No schedule`.
+     - **Node security channel type**: `None`.
+     - **Security channel scheduler**: `No schedule`.
+     - **Authentication and Authorization**: `Local accounts with Kubernetes RBAC`.
+   - In the `Node pools` tap fill in the following details:
+     - Select **agentpool**. Optionally change its name to `masterpool`. This nodes will have the controlplane.
+        - Set **node size** to `D2as_v4`.
+        - **Scale method**: `Manual`
+        - **Node count**: `1`
+        - Click `update`
+     - Click on **Add node pool**:
+        - **Node pool name**: `workerspool`.
+        - **Mode**: `User` 
+        - Set **node size** to `D2as_v4`.
+        - **Scale method**: `Manual`
+        - **Node count**: `2`
+        - Click `add`
+   - Click **Review + Create**, and then **Create**. The deployment will take a few minutes.
+
+4. **Connect to the AKS Cluster:**
+   - Once the AKS cluster is deployed, navigate to the cluster in the Azure Portal.
+   - In the overview page, click on **Connect**. 
+   - Select **Azure CLI** tap. You will need Azure CLI. If you don't have it: [**Install Azure CLI**](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+   - Login to your azure account using the following command:
+      ```
+      az login
+      ```
+   - Set the cluster subscription using the command shown in the portal (it will look something like this):
+      ```
+      az account set --subscription 'subscribtion-id'
+      ```
+
+   - Copy the command shown in the portal for configuring `kubectl` (it will look something like this):
+     ```
+     az aks get-credentials --resource-group AlgonquinPetStoreRG --name AlgonquinPetStoreCluster
+     ```
 
 ## Table of Microservice Repositories
 
@@ -62,9 +120,9 @@ Step-by-step instructions to deploy the application in a Kubernetes cluster.
 | `makeline-service-Best_Buy`      | [makeline-service-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/makeline-best_buy/general)   |
 | `ai-service-Best_Buy`            | [ai-service-Best_Buy](https://hub.docker.com/repository/docker/lokmanavsar229/ai-service-best_buy/general)   |
 
-## Run the app on Azure Kubernetes Service (AKS)
+## Any issues or limitations in the implementation (Optional)
 
-You can use the kubernetes YAML files provided in the [Deployment Files](./Deployment%20Files/) folder to deploy the app to an AKS cluster.
+
 
 
 
