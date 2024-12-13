@@ -1,5 +1,5 @@
 # Building a Cloud-Native App for Best Buy
-## Updated Application Architecture
+## Application Architecture
 
 ![Best Buy architecture diagram](assets/Best_Buy.png)
 
@@ -102,6 +102,92 @@ The Best Buy application is a microservices-based, containerized architecture th
      ```
      kubectl get nodes
      ```
+5. **Set Up the Azure OpenAI Resource:**
+   - Choose the **East US** region for deployment to ensure capacity for GPT-4 and DALL-E 3 models.
+   - Fill in the required details:
+     - Resource group: Usethe existing group.
+     - Pricing tier: Select `Standard`.
+   - Click **Review + Create** and then **Create** to deploy the Azure OpenAI service.
+
+6. **Deploy the GPT-4 and DALL-E 3 Models**
+
+    **Access the Azure OpenAI Resource**:
+   - Navigate to the Azure OpenAI resource you just created.
+
+    **Deploy GPT-4**:
+   - Go to the **Model Deployments** section and click **Add Deployment**.
+   - Choose **GPT-4** as the model and provide a deployment name (e.g., `gpt-4-deployment`).
+   - Set the deployment configuration as required and deploy the model.
+
+    **Deploy DALL-E 3**:
+   - Repeat the same process to deploy **DALL-E 3**.
+   - Use a descriptive deployment name (e.g., `dalle-3-deployment`).
+
+    **Note Configuration Details**:
+   - Once deployed, note down the following details for each model:
+     - Deployment Name
+     - Endpoint URL
+---
+7. **Retrieve and Configure API Keys**
+
+    **Get API Keys**:
+   - Go to the **Keys and Endpoints** section of your Azure OpenAI resource.
+   - Copy the **API Key (API key 1)** and **Endpoint URL**.
+
+    **Base64 Encode the API Key**:
+   - Use the following command to Base64 encode your API key:
+     ```bash
+     echo -n "<your-api-key>" | base64
+     ```
+   - Replace `<your-api-key>` with your actual API key.
+
+---
+
+8. **Update AI Service Deployment Configuration in the `Deployment Files` folder.**
+    **Modify Secretes YAML**:
+   - Edit the `secrets.yaml` file.
+   - Replace `OPENAI_API_KEY` placeholder with the Base64-encoded value of the `API_KEY`. 
+    **Modify Deployment YAML**:
+   - Edit the `aps-all-in-one.yaml` file.
+   - Replace the placeholders with the configurations you retrieved:
+     - `AZURE_OPENAI_DEPLOYMENT_NAME`: Enter the deployment name for GPT-4.
+     - `AZURE_OPENAI_ENDPOINT`: Enter the endpoint URL for the GPT-4 deployment.
+     - `AZURE_OPENAI_DALLE_ENDPOINT`: Enter the endpoint URL for the DALL-E 3 deployment.
+     - `AZURE_OPENAI_DALLE_DEPLOYMENT_NAME`: Enter the deployment name for DALL-E 3.
+    
+9. **Deploy the ConfigMaps and Secrets**
+    - Deploy the ConfigMap for RabbitMQ Plugins:
+    ```bash
+    kubectl apply -f config-maps.yaml
+    ```
+    - Create and Deploy the Secret for OpenAI API:  
+    - Make sure that you have replaced Base64-encoded-API-KEY in secrets.yaml with your Base64-encoded OpenAI API key.
+    ```bash
+    kubectl apply -f secrets.yaml
+    ```
+    - Verify:
+    ```bash
+    kubectl get configmaps
+    kubectl get secrets
+    ```
+
+10. **Deploy the Application**
+   ```bash
+   kubectl apply -f aps-all-in-one.yaml
+   ```
+11. **Validate the Deployment**
+    - Check Pods and Services:
+    ```bash
+    kubectl get pods
+    kubectl get services
+    ```
+    - Test Frontend Access:
+    - Locate the external IPs for store-front and store-admin services:
+    ```bash
+    kubectl get services
+    ```
+    - Access the Store Front app at the external IP on port 80.
+    - Access the Store Admin app at the external IP on port 80.
 
 ## Table of Microservice Repositories
 
